@@ -8,4 +8,4 @@ COPY apache2.conf /etc/apache2/
 EXPOSE 80
 RUN a2enmod rewrite
 ENTRYPOINT service apache2 start && service php5-fpm start && bash
-
+CMD while true; do sleep 1000; done
