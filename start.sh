@@ -1,5 +1,4 @@
 #!/bin/bash
-service php5-fpm start
-bash &
+exec php5-fpm &
 apache2ctl -D FOREGROUND
 
