@@ -6,6 +6,8 @@ RUN a2enmod actions
 RUN mv /etc/apache2/mods-enabled/fastcgi.conf /etc/apache2/mods-enabled/fastcgi.conf.backup
 COPY fastcgi.conf /etc/apache2/mods-enabled/
 COPY apache2.conf /etc/apache2/
+RUN sed -i 's/upload_max_filesize = .*/upload_max_filesize = 15M/' /etc/php5/fpm/php-fpm.conf
+RUN sed -i 's/post_max_size = .*/post_max_size = 15M/' /etc/php5/fpm/php-fpm.conf
 RUN a2enmod rewrite
 RUN echo "clear_env=no" >> /etc/php5/fpm/php-fpm.conf
 COPY start.sh /root/
